@@ -1,0 +1,116 @@
+.navbar {
+  background-color: #fff;
+  overflow-y: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  z-index: 100;
+  color: red;
+
+  /* position */
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+
+  /* temp */
+  border: 0 solid #e5e7eb;
+  border-color: #0f172a1a;
+  border-bottom: 1px solid #ddd;
+
+  /* padding */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  transition: 0s background-color;
+
+  padding-left: 0.75rem; /* 12px */
+  padding-right: 0.75rem; /* 12px */
+  &:hover {
+    color: #323232;
+    text-decoration: none;
+  }
+}
+
+/* hamburger */
+.hamburger {
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.hamburger div {
+  background-color: #333; /* Color of the hamburger lines */
+  height: 3px;
+  width: 100%;
+  border-radius: 2px;
+}
+
+/* nav-links */
+.nav-links {
+  display: flex; /* Align links horizontally */
+  justify-content: space-around; /* Space out the links evenly */
+  /* Additional styling as needed */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333; /* Link color */
+  /* Additional link styling */
+}
+
+.nav-links.active {
+  display: block; /* Show the links when active */
+}
+
+@media (max-width: 768px) {
+  /* Show hamburger and hide nav links on smaller screens */
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none; /* Hide the links initially */
+    flex-direction: column; /* Stack the links vertically */
+    /* Additional responsive styling for the menu */
+  }
+
+  .nav-links.active {
+    display: flex; /* Show the links when active */
+  }
+
+  .nav-links-item.active {
+    display: none; /* Hide regular nav links */
+  }
+
+  /* Styling for the nav-links when menu is active (optional) */
+  .nav-links a {
+    padding: 10px;
+    border-bottom: 1px solid #eee; /* Optional */
+  }
+}
+
+/* hamburger animate */
+.hamburger.active div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active div:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active div:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -8px);
+}

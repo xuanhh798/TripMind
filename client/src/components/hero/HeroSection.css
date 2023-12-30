@@ -1,0 +1,81 @@
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 50px 50px 200px 50px;
+}
+
+.hero-heading {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.hero-text {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.hero-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .hero-heading {
+    font-size: 2rem;
+  }
+
+  .hero-text {
+    font-size: 1rem;
+  }
+}
+
+.text-input {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 2px solid #ddd; /* Light grey border */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  outline: none; /* Removes the default focus outline */
+  width: 500px; /* Or a width that fits your design */
+}
+
+.text-input:focus {
+  border-color: #007bff; /* Highlight color when focused */
+}
+
+.submit-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff; /* Primary button color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px; /* Spacing between the input and the button */
+  outline: none; /* Removes the default focus outline */
+}
+
+.submit-btn:hover,
+.submit-btn:focus {
+  background-color: #0056b3; /* Darker shade for interaction */
+}
+
+@media (max-width: 768px) {
+  .text-input,
+  .submit-btn {
+    width: inherit; /* Full width on smaller screens */
+    margin-top: 10px;
+  }
+
+  .submit-btn {
+    margin-left: 0; /* Remove margin-left on smaller screens */
+  }
+}

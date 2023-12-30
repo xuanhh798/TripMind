@@ -1,0 +1,14 @@
+.footer {
+  width: 100%;
+  /* padding: 20px; */
+  text-align: right;
+  color: #fff;
+  border-top: 1px solid #e5e7eb;
+}
+
+li {
+  color: rgb(75 85 99);
+  font-size: 0.8rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
