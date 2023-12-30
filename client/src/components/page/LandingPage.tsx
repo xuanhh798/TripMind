@@ -4,10 +4,10 @@ import Footer from "../footer/Footer.tsx";
 export function LandingPage() {
   return (
     <div>
-      <div className="landing-container">
+      <div className="p-4 sm:p-8 flex flex-col max-w-6xl mx-auto">
         <HeroSection />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

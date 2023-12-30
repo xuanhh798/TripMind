@@ -1,8 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* * {
+* {
   font-family: "Open Sans", sans-serif, Georgia, Cambria, "Times New Roman",
     Times, serif;
   line-height: 1.5;
@@ -10,15 +9,15 @@
   padding: 0;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  /* color-scheme: light dark; */
+  /* color: rgba(255, 255, 255, 0.87);
+  background-color: #242424; */
+  --tw-ring-color: none;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-} */
+}
 
 h1 {
   font-family: "Montserrat";

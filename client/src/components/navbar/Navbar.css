@@ -43,6 +43,10 @@ a {
   }
 }
 
+.text-muted-foreground {
+  color: #6c757d;
+}
+
 /* hamburger */
 .hamburger {
   display: none; /* Hidden by default */
@@ -65,12 +69,6 @@ a {
   display: flex; /* Align links horizontally */
   justify-content: space-around; /* Space out the links evenly */
   /* Additional styling as needed */
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #333; /* Link color */
-  /* Additional link styling */
 }
 
 .nav-links.active {

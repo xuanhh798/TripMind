@@ -7,6 +7,11 @@
   padding: 50px 50px 200px 50px;
 }
 
+input,
+input::placeholder {
+  font: 1rem/2 sans-serif;
+}
+
 .hero-heading {
   font-size: 2.5rem;
   margin-bottom: 20px;
@@ -21,7 +26,7 @@
   padding: 10px 20px;
   font-size: 1rem;
   color: #fff;
-  background-color: #007bff;
+  background-color: #000000;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -54,9 +59,10 @@
 .submit-btn {
   padding: 10px 20px;
   font-size: 1rem;
-  color: #fff;
-  background-color: #007bff; /* Primary button color */
-  border: none;
+  color: #bfbfbf;
+  background-color: #f8f9fa; /* Primary button color */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  border: 2px solid #ddd; /* Light grey border */
   border-radius: 5px;
   cursor: pointer;
   margin-left: 10px; /* Spacing between the input and the button */
@@ -64,8 +70,11 @@
 }
 
 .submit-btn:hover,
+.text-input:hover,
 .submit-btn:focus {
-  background-color: #0056b3; /* Darker shade for interaction */
+  color: #494f54;
+  background-color: #ffffff; /* Darker shade for interaction */
+  border: 2px solid #494f54;
 }
 
 @media (max-width: 768px) {

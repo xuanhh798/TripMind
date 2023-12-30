@@ -19,9 +19,7 @@ export default function HeroSection() {
   return (
     <section className="hero-section">
       <h1 className="hero-heading">TripMind 🧠</h1>
-      <p className="hero-text">
-        Explore your dream vacation with a single prompt.
-      </p>
+      <p className="hero-text">Explore your dream vacation.</p>
 
       {/* Text input with submit button */}
       <form onSubmit={handleSubmit}>
@@ -29,10 +27,10 @@ export default function HeroSection() {
           type="text"
           value={inputValue}
           onChange={handleInputChange}
-          placeholder="Enter your text here"
-          className="text-input"
+          placeholder="Take me to London, Paris, and Japan for 14 days."
+          className="text-input duration-700"
         />
-        <button type="submit" className="submit-btn">
+        <button type="submit" className="submit-btn duration-700">
           Submit
         </button>
       </form>
