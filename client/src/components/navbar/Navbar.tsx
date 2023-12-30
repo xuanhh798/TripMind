@@ -11,12 +11,10 @@ function Navbar() {
   };
 
   return (
-    <nav className="navbar">
-      <div className="nav-item">
+    <nav className="flex items-center justify-between py-3 px-4 sm:px-8 border-b sticky top-0 bg-background h-16 z-50">
+      <div className="flex items-center space-x-1.5">
         <Link to="/">
-          <ul>
-            <a href="#">TripMind</a>
-          </ul>
+          <a href="#">TripMind</a>
         </Link>
       </div>
 
