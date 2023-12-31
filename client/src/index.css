@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 * {
-  font-family: "Open Sans", sans-serif, Georgia, Cambria, "Times New Roman",
-    Times, serif;
+  font-family: ui-sans-serif, system-ui, Segoe UI, "Roboto", Helvetica Neue,
+    Arial, Noto Sans, sans-serif;
   line-height: 1.5;
   margin: 0;
   padding: 0;
@@ -17,10 +17,4 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-h1 {
-  font-family: "Montserrat";
-  font-size: 3.2em;
-  line-height: 1.1;
 }

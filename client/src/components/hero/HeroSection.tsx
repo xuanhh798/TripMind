@@ -1,19 +1,23 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./HeroSection.css";
 
 export default function HeroSection() {
-  const [inputValue, setInputValue] = useState("");
+  const [inputText, setinputText] = useState("");
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
-    setInputValue(e.target.value);
+    setinputText(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Process the input value (e.g., send to an API or log it)
-    console.log("Submitted value:", inputValue);
+    console.log("Submitted value:", inputText);
     // Clear the input after submission
-    setInputValue("");
+    setinputText("");
+    navigate(`/redirected/${inputText}`);
   };
 
   return (
@@ -25,7 +29,7 @@ export default function HeroSection() {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          value={inputValue}
+          value={inputText}
           onChange={handleInputChange}
           placeholder="Take me to London, Paris, and Japan for 14 days."
           className="text-input duration-700"

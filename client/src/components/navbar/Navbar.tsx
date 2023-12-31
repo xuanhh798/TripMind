@@ -37,6 +37,18 @@ function Navbar() {
           {/* Navigation Links */}
           <div className={`nav-links ${isOpen ? "active" : ""} nav-item`}>
             <a
+              href="/page"
+              className="duration-500 text-muted-foreground hover:text-primary transition-colors text-sm flex flex-row items-center p-2"
+            >
+              Page
+            </a>
+            <a
+              href="/browse"
+              className="duration-500 text-muted-foreground hover:text-primary transition-colors text-sm flex flex-row items-center p-2"
+            >
+              Browse
+            </a>
+            <a
               href="/about"
               className="duration-500 text-muted-foreground hover:text-primary transition-colors text-sm flex flex-row items-center p-2"
             >
@@ -47,12 +59,6 @@ function Navbar() {
               className="duration-500 text-muted-foreground hover:text-primary transition-colors text-sm flex flex-row items-center p-2"
             >
               Contact
-            </a>
-            <a
-              href="/page"
-              className="duration-500 text-muted-foreground hover:text-primary transition-colors text-sm flex flex-row items-center p-2"
-            >
-              Article
             </a>
           </div>
         </div>

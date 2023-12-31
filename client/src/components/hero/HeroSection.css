@@ -4,7 +4,7 @@
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding: 50px 50px 200px 50px;
+  padding: 200px 50px 200px 50px;
 }
 
 input,
@@ -12,12 +12,19 @@ input::placeholder {
   font: 1rem/2 sans-serif;
 }
 
+.text-input:focus {
+  outline: none !important;
+}
+
 .hero-heading {
-  font-size: 2.5rem;
+  font-family: "Montserrat";
+  font-size: 4.6em;
+  line-height: 1.1;
   margin-bottom: 20px;
 }
 
 .hero-text {
+  font-family: "Montserrat";
   font-size: 1.2rem;
   margin-bottom: 30px;
 }
