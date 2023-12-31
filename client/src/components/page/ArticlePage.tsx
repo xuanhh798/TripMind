@@ -1,4 +1,24 @@
+import generateArticle from "./generateArticle.tsx";
+
 export function ArticlePage() {
+  const title = "Article title";
+  const introParagraph = "This is the preview paragraph.";
+  const subheadings = ["This is title 1", "This is title 2", "This is title 3"];
+  const previewImages = ["japan.jpeg", "london.jpeg", "sa.jpeg"];
+  const contentImages = ["japan-ls.jpeg", "london-ls.jpeg", "sa-ls.jpeg"];
+  const paragraphs = [
+    ["This is paragraph 1a", "This is paragraph 1b"],
+    ["This is paragraph 2"],
+    ["This is paragraph 3"],
+  ];
+  return generateArticle({
+    title,
+    introParagraph,
+    subheadings,
+    previewImages,
+    paragraphs,
+    contentImages,
+  });
   return (
     <div className="flex flex-col items-center pt-8 pb-32 px-4 sm:px-8">
       <div className="max-w-3xl w-full gap-4">
