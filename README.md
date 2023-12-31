@@ -4,6 +4,9 @@ TripMind generates an aesthetic and informational article for a user's dream vac
 
 ## Page View
 
+![sample_page](https://github.com/xuanhh798/TripMind/assets/155046577/09cdc3bc-5a08-4fb7-8519-202349d2d982)
+
+
 ## Warning
 
 Never publish or share this repository to third parties.
