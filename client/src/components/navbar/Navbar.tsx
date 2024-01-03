@@ -42,12 +42,12 @@ function Navbar() {
             >
               Page
             </a>
-            <a
+            {/* <a
               href="/browse"
               className="duration-500 text-muted-foreground hover:text-primary transition-colors text-sm flex flex-row items-center p-2"
             >
               Browse
-            </a>
+            </a> */}
             <a
               href="/about"
               className="duration-500 text-muted-foreground hover:text-primary transition-colors text-sm flex flex-row items-center p-2"

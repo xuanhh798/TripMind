@@ -1,10 +1,14 @@
 import assert from "assert";
 import express from "express";
-import axios from "axios";
 import { analyseUserInput, main } from "./src/index.tsx";
 import { config } from "dotenv";
 import { genPromptv2, generateCountries } from "./src/generatePrompts.tsx";
 import { processTextData } from "./src/processTextData.tsx";
+import {
+  writeObjectToFile,
+  readObjectFromFile,
+  generateCachePath,
+} from "./cacheContent.js";
 
 config();
 
@@ -19,32 +23,40 @@ app.post("/api", async (req, res) => {
     console.log("Submitted value:", inputText);
 
     const listOfCountries = await analyseUserInput(inputText);
-    console.log("list of countries", listOfCountries);
+
     // TODO: Update code to inform user that the input is not valid
-    if (listOfCountries === 0) {
+    if (listOfCountries == null) {
       console.error("User input is not valid");
-      res.status(418).send("User input is not valid");
-    } else if (listOfCountries === 2) {
-      console.error(
-        "User input has more than 3 countries which is more than what is supported currently."
-      );
-      res
-        .status(418)
-        .send(
-          "User input has more than 3 countries which is more than what is supported currently."
-        );
+      return res.status(418).send("User input is not valid");
     }
+
+    // Read cache if country combination exists already
+    // If so, we can just return the cached response
+    const cache = await readObjectFromFile(generateCachePath());
+    const countryKey = listOfCountries.join("").toLowerCase();
+    const potentialHit = cache[countryKey];
+    if (potentialHit) {
+      return res.status(200).send({ response: potentialHit });
+    }
+
+    console.log("list of countries", listOfCountries);
 
     assert(Array.isArray(listOfCountries));
     const userPrompt = genPromptv2(generateCountries(listOfCountries));
 
     // OpenAI API call
-    const gptTextResponse = await main(userPrompt);
+    const gptTextResponse = await main(userPrompt, "GPT4");
     console.log("Xuan response:", gptTextResponse);
 
     if (gptTextResponse != null) {
       const response = await processTextData(gptTextResponse, listOfCountries);
       console.log("Final response to be returned:", response);
+
+      // cache result
+      await writeObjectToFile(
+        { ...cache, [countryKey]: response },
+        generateCachePath()
+      );
       res.status(200).send({ response });
     }
   } catch (error) {

@@ -1,10 +1,5 @@
 // Import all functions from generatePrompts.tsx
-import genUserPrompts, {
-  genPromptv2,
-  generateDuration,
-  generateCountries,
-  generateStyleOfHumor,
-} from "./generatePrompts.tsx";
+import { generateCountries } from "./generatePrompts.tsx";
 import OpenAI from "openai";
 import { config } from "dotenv";
 import {
@@ -54,18 +49,21 @@ async function query(
 
 export async function analyseUserInput(
   text: string
-): Promise<number | Array<string>> {
+): Promise<Array<string> | null> {
   const systemPrompt = "You are a helpful assistant";
   const userPrompt = `"${text}" If more than 3 countries are mentioned, reply with the word "Less", else reply with each country's name only on each line`;
   const response = await query(systemPrompt, userPrompt, { model: "GPT3" });
-  if (text.toLowerCase() === "yes") {
-    return 0;
-  } else if (text.toLowerCase() === "less") {
-    return 2;
+  if (response.toLowerCase() == "less") {
+    return null;
   }
 
   console.log("User input response: ", response);
-  const listOfCountries = response.split("\n");
+  let listOfCountries = response.split("\n");
+
+  for (let i = 0; i < listOfCountries.length; i++) {
+    listOfCountries[i] = listOfCountries[i].trim();
+  }
+
   return listOfCountries;
 }
 
@@ -83,14 +81,14 @@ const RUN_QUERY = true;
 const SAMPLE_SYSTEM_PROMPT = "You are a helpful assistant.";
 const SAMPLE_USER_PROMPT = "Whats 1 + 2?";
 
-export async function main(userPrompt: string) {
+export async function main(userPrompt: string, model: string = "GPT3") {
   // Generate text content for page
   if (process.env.SYSTEM_PROMPT == null) {
     console.log("System prompt is not set!");
   } else {
     // console.log('System prompt is set to: "' + process.env.SYSTEM_PROMPT + '"');
     // console.log("User prompt is set to: " + userPrompt);
-    return query(process.env.SYSTEM_PROMPT, userPrompt, { model: "GPT3" })
+    return query(process.env.SYSTEM_PROMPT, userPrompt, { model })
       .then(async (response) => {
         await incrementNumberOfRuns(RESULTS_PATH);
         await appendResults(

@@ -6,7 +6,7 @@ export function genPromptv2(countryString: string) {
     "that keeps readers hooked,",
     "with an undertone of dark humor,",
     "without using the word dark and humor,",
-    "in 1500 words. separate section by country with title in brackets, always start with an introduction title and paragraph",
+    "in 1500 words. separate section by country with title in square brackets, always start with an introduction title and paragraph",
   ].join(" ");
 
   return resultString;
