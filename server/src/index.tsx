@@ -1,5 +1,6 @@
 // Import all functions from generatePrompts.tsx
 import genUserPrompts, {
+  genPromptv2,
   generateDuration,
   generateCountries,
   generateStyleOfHumor,
@@ -31,6 +32,7 @@ async function query(
   console.log(`Querying ${targetModel}..\n`);
   console.log(`System prompt: ${systemPrompt}\n`);
   console.log(`User prompt: ${userPrompt}\n`);
+
   const completion = await openai.chat.completions.create({
     model: targetModel,
     messages: [
@@ -50,31 +52,58 @@ async function query(
   return chatGPTResponse;
 }
 
-function test() {
-  console.log("test");
+export async function analyseUserInput(
+  text: string
+): Promise<number | Array<string>> {
+  const systemPrompt = "You are a helpful assistant";
+  const userPrompt = `"${text}" If more than 3 countries are mentioned, reply with the word "Less", else reply with each country's name only on each line`;
+  const response = await query(systemPrompt, userPrompt, { model: "GPT3" });
+  if (text.toLowerCase() === "yes") {
+    return 0;
+  } else if (text.toLowerCase() === "less") {
+    return 2;
+  }
+
+  console.log("User input response: ", response);
+  const listOfCountries = response.split("\n");
+  return listOfCountries;
 }
 
-const SAMPLE_SYSTEM_PROMPT = "You are a helpful assistant.";
-const SAMPLE_USER_PROMPT = "Whats 1 + 2?";
+const countries = ["United States", "Japan", "Sweden"];
+const countryString = generateCountries(countries);
+const usev2: boolean = true;
+// const userPrompt = usev2
+//   ? genPromptv2(countryString)
+//   : genUserPrompts(generateDuration(), countryString, generateStyleOfHumor());
 
-const userPrompt = genUserPrompts(
-  generateDuration(),
-  generateCountries(["United States", "Japan", "Sweden"]),
-  generateStyleOfHumor()
-);
 const systemPrompt = process.env.SYSTEM_PROMPT;
 
 const RUN_QUERY = true;
 
-if (RUN_QUERY && systemPrompt) {
-  const targetModel = "GPT3";
+const SAMPLE_SYSTEM_PROMPT = "You are a helpful assistant.";
+const SAMPLE_USER_PROMPT = "Whats 1 + 2?";
 
-  query(systemPrompt, userPrompt, { model: targetModel })
-    .then(async (response) => {
-      await incrementNumberOfRuns(RESULTS_PATH);
-      await appendResults(RESULTS_PATH, systemPrompt, userPrompt, response);
-    })
-    .catch((err) => console.error(err));
-} else {
-  console.log("Query skipped.");
+export async function main(userPrompt: string) {
+  // Generate text content for page
+  if (process.env.SYSTEM_PROMPT == null) {
+    console.log("System prompt is not set!");
+  } else {
+    // console.log('System prompt is set to: "' + process.env.SYSTEM_PROMPT + '"');
+    // console.log("User prompt is set to: " + userPrompt);
+    return query(process.env.SYSTEM_PROMPT, userPrompt, { model: "GPT3" })
+      .then(async (response) => {
+        await incrementNumberOfRuns(RESULTS_PATH);
+        await appendResults(
+          RESULTS_PATH,
+          process.env.SYSTEM_PROMPT,
+          userPrompt,
+          response
+        );
+        console.log("Xuan 2: ", response);
+        return response;
+      })
+      .catch((err) => console.error(err));
+  }
 }
+
+// main("London, Paris, and Japan.");

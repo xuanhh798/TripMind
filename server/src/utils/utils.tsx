@@ -53,13 +53,11 @@ export async function incrementNumberOfRuns(fileName) {
 
         // Replace the last character with the new number
         firstLine = firstLine.substring(0, firstLine.length - 1) + number;
-        console.log(firstLine);
         lines[0] = firstLine;
 
         // Join the lines back into a single string
         data = lines.join("\n");
 
-        console.log(data);
         // Write the updated content back to the file
         await fs.writeFile(fileName, data, { encoding: "utf8", flag: "w+" });
         console.log("File updated successfully");
@@ -99,8 +97,6 @@ async function main() {
       )
     )
     .catch((err) => console.error(err));
-
-  console.log(res);
 
   // Example usage:
   const res2 = await incrementNumberOfRuns(RESULTS_PATH)

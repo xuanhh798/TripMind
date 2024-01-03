@@ -1,4 +1,16 @@
-import { assert } from "console";
+export function genPromptv2(countryString: string) {
+  const resultString = [
+    "Imagine you are writing a medium article,",
+    "write an article for a trip to",
+    countryString,
+    "that keeps readers hooked,",
+    "with an undertone of dark humor,",
+    "without using the word dark and humor,",
+    "in 1500 words. separate section by country with title in brackets, always start with an introduction title and paragraph",
+  ].join(" ");
+
+  return resultString;
+}
 
 function genUserPrompts(
   duration: string,
@@ -73,7 +85,7 @@ export function generateCountries(countries?: string[]) {
   if (countries == null) {
     return "Japan";
   }
-  assert(countries.length > 0);
+
   if (countries.length == 1) {
     return countries[0];
   }
@@ -113,7 +125,5 @@ function generateLanguages() {
 
   return DEFAULT_LANGUAGE;
 }
-
-console.log(generateStyleOfHumor());
 
 export default genUserPrompts;
