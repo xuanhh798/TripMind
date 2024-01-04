@@ -1,3 +1,7 @@
 .env
 results
 node_modules
+
+src/content_cache
+src/country_images
+src/country_json
