@@ -2,17 +2,6 @@
 
 TripMind utilises Large Language Models (LLMs) to generate an aesthetic and informational article for a user's dream vacation based on user prompt.
 
-## Setup
-
-```
-cd client
-npm run dev
-```
-
-```
-cd server
-tsx server.ts
-```
 
 ## Page View
 
