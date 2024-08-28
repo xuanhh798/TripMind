@@ -1,6 +1,6 @@
 # Overview
 
-TripMind generates an aesthetic and informational article for a user's dream vacation based on user prompt.
+TripMind utilises Large Language Models (LLMs) to generate an aesthetic and informational article for a user's dream vacation based on user prompt.
 
 ## Setup
 
